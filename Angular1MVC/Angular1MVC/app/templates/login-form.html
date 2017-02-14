@@ -1,0 +1,30 @@
+﻿<div class="card card-container">    
+    <img id="profile-img" class="profile-img-card"
+          src="../../Images/avatar.jpg" />
+    <p id="profile-name" class="profile-name-card"></p>
+    <form validate-invalid
+           class="form-signin" id="loginform">
+        
+        <span id="reauth-email" class="reauth-email"></span>
+        <input type="text" name="UserName" ng-model="user.username"
+                id="inputUsername"
+                class="form-control" placeholder="User Name" required>
+        <input type="password" name="Password"
+                ng-model="user.password"
+                id="inputPassword" class="form-control"
+                placeholder="Password" required>
+        <div id="remember" class="checkbox">            
+            <label><input name="RememberMe" type="checkbox" ng-model="user.remember" value="remember-me"> Remember me</label>            
+        </div>
+        <button ng-disabled="!form.enableSubmit"
+                 class="btn btn-lg btn-success btn-block btn-signin"
+                 ng-click="login()">
+            Sign in
+        </button>       
+    </form>
+    <a href="#/forget" class="forgot-password"
+        style="color:rgb(104, 145, 162);">Forgot password?</a> 
+       
+    <button ng-click="register()" class="btn btn-success btn-sm">Register</button> 
+       
+</div>

@@ -1,0 +1,85 @@
+﻿<div class="card card-container">
+    <form name="registerform" validate-invalid class="form-signin" id="registerform">
+        <input type="text" name="inpUserName" ng-model="user.username" id="inputUsername" class="form-control" 
+               placeholder="User Name" required ng-minlength="6">
+        
+        <div style="font-size:12px;padding-left:5px;padding-bottom:10px;margin-top:-7px;color:red" 
+             ng-show="registerform.inpUserName.$invalid && ShowError">
+            <span ng-show="registerform.inpUserName.$error.minlength">
+                    Minimum length for username is 6 
+            </span>
+            <span ng-show="registerform.inpUserName.$error.required">
+                    User name is required
+            </span>
+        </div>
+
+        <input type="text" name="inpDisplayname" ng-model="user.displayname" id="inputDisplayname" class="form-control"
+               placeholder="Display Name" required ng-minlength="6">
+       
+         <div style="font-size:12px;padding-left:5px;padding-bottom:10px;margin-top:-7px;color:red" 
+              ng-show="registerform.inpDisplayname.$invalid && ShowError">
+            <span ng-show="registerform.inpDisplayname.$error.minlength">
+                Minimum length for display name is 6
+            </span>
+            <span ng-show="registerform.inpDisplayname.$error.required">
+                Display name is required
+            </span>
+        </div>
+
+        <input type="email" name="inpEmail" ng-model="user.email" id="inputEmail" class="form-control"
+               placeholder="Email" required>
+        
+        <div style="font-size:12px;padding-left:5px;padding-bottom:10px;margin-top:-7px;color:red" 
+             ng-show="registerform.inpEmail.$invalid && ShowError">           
+            <span ng-show="registerform.inpEmail.$error.required">
+                Email is required
+            </span>
+            <span ng-show="registerform.inpEmail.$error.email">
+              Not a valid Email format
+            </span>
+        </div>
+
+        <input type="password" name="inpPassword" ng-model="user.password" id="inputPassword" class="form-control"
+               placeholder="Password" required >
+
+        <div style="font-size:12px;padding-left:5px;padding-bottom:10px;margin-top:-7px;color:red" 
+             ng-show="registerform.inpPassword.$invalid && ShowError">
+            <span ng-show="registerform.inpPassword.$error.required">
+                Please enter password
+            </span>
+        </div>
+
+        <input type="password" name="inpRePassword" ng-pattern="user.password" ng-model="user.repassword" id="inputRePassword" class="form-control"
+               placeholder="ReEnter Password" required>
+
+        <div style="font-size:12px;padding-left:5px;padding-bottom:10px;margin-top:-7px;color:red" 
+             ng-show="registerform.inpRePassword.$invalid && ShowError">
+            <span ng-show="registerform.inpRePassword.$error.required">
+                Please enter password again
+            </span>
+            <span ng-show="registerform.inpRePassword.$error.pattern">
+                Password not match
+            </span>
+        </div>
+
+        <input type="text" ng-pattern="/^\d{10}$/" name="inpPhone" ng-model="user.phone" id="inputPhone" class="form-control"
+               placeholder="Phone number" required>
+
+        <div style="font-size:12px;padding-left:5px;padding-bottom:10px;margin-top:-7px;color:red" 
+             ng-show="registerform.inpPhone.$invalid && ShowError">
+            <span ng-show="registerform.inpPhone.$error.required">
+                Phone number is required
+            </span>
+            <span ng-show="registerform.inpPhone.$error.pattern">
+                Not a valid phone number,must be 10 digits
+            </span>
+        </div>
+
+        <button class="btn btn-lg btn-success btn-block btn-signin" ng-click="register(form.enableSubmit)">
+            Register
+        </button>    
+        <button class="btn btn-lg btn-success btn-block btn-signin" ng-click="clear()">
+            Clear
+        </button>    
+    </form>
+</div>

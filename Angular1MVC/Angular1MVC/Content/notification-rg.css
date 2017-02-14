@@ -1,0 +1,54 @@
+/**
+ * Created by Rajesh on 01-11-2014.
+ */
+
+.notifyinnercontainer
+{
+    width: 250px;;
+    display: none;
+    word-wrap: break-word;
+}
+
+.notifytitle{
+    float: left;
+    font-weight: bold;
+    word-wrap: break-word;
+    font-size:13px
+}
+
+.notifyclosebtn{
+    cursor:pointer;
+    background-color:transparent;
+    float:right;
+    padding:0px;
+    border:none;
+    font-size:16px;
+    width:10px;
+    height:0px
+}
+
+.notifyinnercontainer > div {
+    width: 250px;
+    border-radius: 3px 3px 3px 3px;
+    -moz-border-radius: 3px 3px 3px 3px;
+    -webkit-border-radius: 3px 3px 3px 3px;
+    background-position: 15px center;
+    background-repeat: no-repeat;
+    box-shadow: 0 0 10px #999999;
+    -moz-box-shadow: 0 0 10px #999999;
+    -webkit-box-shadow: 0 0 10px #999999;
+    margin: 0 0 6px;
+    padding: 5px 5px 5px 5px;
+    color: #ffffff;
+    opacity: 0.8;
+    -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
+    filter: alpha(opacity=80);
+}
+
+.closenotify{
+    position: relative;
+    right: -2px;
+    top: -5px;
+    font-size: 16px;
+    font-weight: bolder;
+}
