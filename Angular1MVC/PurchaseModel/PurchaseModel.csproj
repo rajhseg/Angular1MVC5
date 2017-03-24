@@ -54,9 +54,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PurchaseDBContext.cs" />
     <Compile Include="PurchaseDbInitializer.cs" />
+    <Compile Include="Repositories\AccountRepositories\IImageFileRepository.cs" />
+    <Compile Include="Repositories\AccountRepositories\ImageFileRepository.cs" />
+    <Compile Include="Repositories\AccountRepositories\IProductRepository.cs" />
     <Compile Include="Repositories\AccountRepositories\IRoleRepository.cs" />
     <Compile Include="Repositories\AccountRepositories\IUserRepository.cs" />
     <Compile Include="Repositories\AccountRepositories\IUserRoleRepository.cs" />
+    <Compile Include="Repositories\AccountRepositories\ProductRepository.cs" />
     <Compile Include="Repositories\AccountRepositories\RoleRepository.cs" />
     <Compile Include="Repositories\AccountRepositories\UserRepository.cs" />
     <Compile Include="Repositories\AccountRepositories\UserRoleRepository.cs" />

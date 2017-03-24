@@ -1,4 +1,5 @@
-﻿using Angular1MVC.Models;
+﻿using Angular1MVC.Handlers;
+using Angular1MVC.Models;
 using PurchaseEntities;
 using PurchaseModel.Repositories;
 using PurchaseModel.Services;
@@ -13,7 +14,7 @@ using System.Web.Http.Description;
 
 namespace Angular1MVC.Controllers
 {
-    [Authorize(Roles ="Admin")]
+    [Authorization(Roles ="Admin")]
     [RoutePrefix("api/account")]
     public class AccountController : BaseController
     {
@@ -65,23 +66,23 @@ namespace Angular1MVC.Controllers
         public LoginAuthData Login(LoginModel model)
         {
             LoginAuthData _response = null;
-                if (ModelState.IsValid)
+            if (ModelState.IsValid)
+            {
+                AuthenticationData _data = userService.Validate(model.UserName, model.Password);
+                if(_data!=null && _data.User != null && _data.User.IsActive)
                 {
-                    AuthenticationData _data = userService.Validate(model.UserName, model.Password);
-                    if(_data!=null && _data.User != null)
-                    {
-                        _response =  new LoginAuthData(){ Status = true,Username = model.UserName, Authcode = userService.GetOAuthData(_data) };
-                    }
-                    else
-                    {
-                        _response = new LoginAuthData() { Status = false ,Username = model.UserName};
-                    }
+                    _response =  new LoginAuthData(){ Status = true, Role = _data.User.Roles.Select(x=>x.Role.Name).FirstOrDefault(),Username = model.UserName, Authcode = userService.GetOAuthData(_data) };
                 }
                 else
                 {
-                    _response = new LoginAuthData() { Status = false, Username = model.UserName };
+                    _response = new LoginAuthData() { Status = false ,Username = model.UserName};
                 }
-                return _response;           
+            }
+            else
+            {
+                _response = new LoginAuthData() { Status = false, Username = model.UserName };
+            }
+            return _response;           
         }
 
     }

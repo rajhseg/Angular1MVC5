@@ -18,7 +18,7 @@ namespace Angular1MVC.Handlers
             
             try
             {
-                request.Headers.TryGetValues("authorization", out _headers);
+                request.Headers.TryGetValues("Authorization", out _headers);
                 if (_headers != null)
                 {
                     var authtoken = _headers.FirstOrDefault();

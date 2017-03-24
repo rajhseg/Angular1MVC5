@@ -12,6 +12,8 @@ namespace PurchaseModel.Repositories.AccountRepositories
     {
         public RoleRepository(DbContext context, IContextFactory factory) : base(context, factory)
         {
+
         }
     }
+
 }

@@ -31,6 +31,7 @@ namespace PurchaseService
 
         string GetOAuthData(AuthenticationData data);
 
+        string GetOAuthData(string username, string password);
         AuthenticationData GetMembershipData(string Oauthdata);
 
     }

@@ -15,6 +15,10 @@ namespace PurchaseModel.Repositories
 
         IUserRoleRepository UserRoles { get; }
 
+        IProductRepository Products { get; }
+
+        IImageFileRepository ImageFiles { get; }
+
         int Commit();
     }
 }

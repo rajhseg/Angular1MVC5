@@ -8,6 +8,7 @@
 var angularFileUpload = angular.module('angularFileUpload', []);
 
 angularFileUpload.service('$upload', ['$http', '$rootScope', '$timeout', function($http, $rootScope, $timeout) {
+
 	function sendHttp(config) {
 		config.method = config.method || 'POST';
 		config.headers = config.headers || {};
@@ -67,10 +68,13 @@ angularFileUpload.service('$upload', ['$http', '$rootScope', '$timeout', functio
 		
 		return promise;
 	};
+
 	this.upload = function(config) {
+
 		config.headers = config.headers || {};
 		config.headers['Content-Type'] = undefined;
 		config.transformRequest = config.transformRequest || $http.defaults.transformRequest;
+
 		var formData = new FormData();
 		if (config.data) {
 			for (var key in config.data) {
@@ -92,6 +96,7 @@ angularFileUpload.service('$upload', ['$http', '$rootScope', '$timeout', functio
 				}
 			}
 		}
+		
 		config.transformRequest =  angular.identity;
 		
 		var fileFormName = config.fileFormDataName || 'file';
@@ -109,6 +114,7 @@ angularFileUpload.service('$upload', ['$http', '$rootScope', '$timeout', functio
 		
 		return sendHttp(config);
 	};
+
 	this.http = function(config) {
 		return sendHttp(config);
 	}
@@ -116,7 +122,9 @@ angularFileUpload.service('$upload', ['$http', '$rootScope', '$timeout', functio
 
 angularFileUpload.directive('ngFileSelect', [ '$parse', '$http', '$timeout', function($parse, $http, $timeout) {
 	return function(scope, elem, attr) {
+
 		var fn = $parse(attr['ngFileSelect']);
+
 		elem.bind('change', function(evt) {
 			var files = [], fileList, i;
 			fileList = evt.target.files;
@@ -132,9 +140,11 @@ angularFileUpload.directive('ngFileSelect', [ '$parse', '$http', '$timeout', fun
 				});
 			});
 		});
+
 		elem.bind('click', function(){
 			this.value = null;
 		});
+
 	};
 } ]);
 
@@ -151,20 +161,25 @@ angularFileUpload.directive('ngFileDropAvailable', [ '$parse', '$http', '$timeou
 
 angularFileUpload.directive('ngFileDrop', [ '$parse', '$http', '$timeout', function($parse, $http, $timeout) {
 	return function(scope, elem, attr) {
+
 		if ('draggable' in document.createElement('span')) {
+
 			var cancel = null;
 			var fn = $parse(attr['ngFileDrop']);
+
 			elem[0].addEventListener("dragover", function(evt) {
 				$timeout.cancel(cancel);
 				evt.stopPropagation();
 				evt.preventDefault();
 				elem.addClass(attr['ngFileDragOverClass'] || "dragover");
 			}, false);
+
 			elem[0].addEventListener("dragleave", function(evt) {
 				cancel = $timeout(function() {
 					elem.removeClass(attr['ngFileDragOverClass'] || "dragover");
 				});
 			}, false);
+
 			elem[0].addEventListener("drop", function(evt) {
 				evt.stopPropagation();
 				evt.preventDefault();
@@ -182,6 +197,8 @@ angularFileUpload.directive('ngFileDrop', [ '$parse', '$http', '$timeout', funct
 					});
 				});
 			}, false);
+
+
 		}
 	};
 } ]);

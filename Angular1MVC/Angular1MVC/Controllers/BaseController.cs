@@ -24,7 +24,8 @@ namespace Angular1MVC.Controllers
             HttpResponseMessage _response = null;
             try
             {
-                _response = method.Invoke();
+                if(method!=null)
+                    _response = method.Invoke();
             }catch(Exception ex)
             {
                 _response = Request.CreateResponse(System.Net.HttpStatusCode.InternalServerError, ex.Message);

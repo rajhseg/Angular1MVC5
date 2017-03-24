@@ -176,17 +176,29 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\DefaultController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Filters\CheckMimeMultiPart.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Handlers\AuthHandler.cs" />
+    <Compile Include="Handlers\AuthorizationAttribute.cs" />
+    <Compile Include="Models\ChangePasswordModel.cs" />
+    <Compile Include="Models\FilePostResult.cs" />
     <Compile Include="Models\LoginAuthData.cs" />
     <Compile Include="Models\LoginModel.cs" />
+    <Compile Include="Models\ProductModel.cs" />
     <Compile Include="Models\RegistrationModel.cs" />
+    <Compile Include="Models\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Providers\MultipartFormStreamProvider.cs" />
+    <Compile Include="Validators\ChangePasswordValidator.cs" />
     <Compile Include="Validators\LoginModelValidator.cs" />
     <Compile Include="Validators\RegistrationModelValidator.cs" />
+    <Compile Include="Validators\UserModelValidator.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\app.js" />
@@ -194,24 +206,31 @@
     <Content Include="app\controllers\historyController.js" />
     <Content Include="app\controllers\homeController.js" />
     <Content Include="app\controllers\messagesController.js" />
+    <Content Include="app\controllers\passwordController.js" />
     <Content Include="app\controllers\profileController.js" />
     <Content Include="app\controllers\registerController.js" />
     <Content Include="app\controllers\rootController.js" />
+    <Content Include="app\directives\upload.directive.js" />
     <Content Include="app\factory\DbFactory.js" />
     <Content Include="app\factory\httpFactory.js" />
+    <Content Include="app\filters\textfilter.js" />
     <Content Include="app\services\authService.js" />
     <Content Include="app\services\notifyService.js" />
     <Content Include="app\templates\about.html" />
     <Content Include="app\templates\app-load.html" />
+    <Content Include="app\templates\deactivate.html" />
+    <Content Include="app\templates\filedrop.html" />
     <Content Include="app\templates\history.html" />
     <Content Include="app\templates\home.html" />
     <Content Include="app\templates\login-form.html" />
     <Content Include="app\templates\login.html" />
     <Content Include="app\templates\messages.html" />
+    <Content Include="app\templates\password.html" />
     <Content Include="app\templates\profile.html" />
     <Content Include="app\templates\register.html" />
     <Content Include="app\templates\side-navbar.html" />
     <Content Include="app\templates\top-navbar.html" />
+    <Content Include="app\templates\upload.html" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\notification-rg.css" />
@@ -222,8 +241,11 @@
     <Content Include="Images\avatar.jpg" />
     <Content Include="Scripts\angular-base64.js" />
     <Content Include="Scripts\angular-cookies.js" />
+    <Content Include="Scripts\angular-file-upload-shim.js" />
     <Content Include="Scripts\angular-file-upload.js" />
     <Content Include="Scripts\angular-route.js" />
+    <Content Include="Scripts\angular-ui-router.js" />
+    <Content Include="Scripts\angular-ui-router.min.js" />
     <Content Include="Scripts\angular-validator.js" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -263,10 +285,12 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Error\Index.cshtml" />
+    <Content Include="Views\Error\_ViewStart.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="app\filters\" />
     <Folder Include="App_Data\" />
+    <Folder Include="Views\User\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

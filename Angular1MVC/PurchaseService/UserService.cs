@@ -29,8 +29,9 @@ namespace PurchaseService
         {
             var _authData = new AuthenticationData();
             
-            var _user = _unitofwork.Users.Fetch(x => x.Name == username).FirstOrDefault();
-            if (_user != null && _encService.Decrypt(_user.EncPassword) == password)
+            var _user = _unitofwork.Users.Fetch(x => x.Name == username && x.Password == password).FirstOrDefault();
+
+            if (_user != null)
             {
                 var _roles = _user.Roles;
                 _authData.User = _user;
@@ -164,6 +165,13 @@ namespace PurchaseService
         public string GetOAuthData(AuthenticationData data)
         {
             var format = string.Format("OAUTH-TOKEN {0} {1}", data.User.Name, data.User.Password);
+            var oauthdata = _encService.Encrypt(format);
+            return oauthdata;
+        }
+
+        public string GetOAuthData(string username,string password)
+        {
+            var format = string.Format("OAUTH-TOKEN {0} {1}", username, password);
             var oauthdata = _encService.Encrypt(format);
             return oauthdata;
         }

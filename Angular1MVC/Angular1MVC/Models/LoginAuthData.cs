@@ -13,5 +13,7 @@ namespace Angular1MVC.Models
 
         public string Authcode { set; get; }
 
+        public string Role { set; get; }
+
     }
 }

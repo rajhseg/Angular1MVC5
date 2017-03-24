@@ -200,6 +200,10 @@ section {
     color: #FFFFFF;
 }
 
+
+.row{
+    margin-right:0px !important;
+}
 .nav .open ul > li {
     background-color: #00464f;
 }

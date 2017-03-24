@@ -1,1 +1,20 @@
-﻿Messages
+﻿<div class="row">
+    <fileupload-form class="col-lg-4 col-md-4 col-sm-4 col-xs-4"
+                     asyncurl="~/api/Blog"
+                     method="post"
+                     input-data="filedata"
+                     filedrop-enable="true"
+                     fileselect-callback="uploadfiles(files)"
+                     success-callback="success(data,status,headers,config)"
+                     error-callback="error(data,status,headers,config)"></fileupload-form>
+
+    <div class="col-md-4">
+        <div>
+            <img ng-src="producturl" />
+        </div>
+        <div>
+            <button></button>
+        </div>
+    </div>
+   
+</div>

@@ -18,12 +18,17 @@ namespace PurchaseModel.Repositories
 
         public IUserRepository Users { get; private set; }
 
+        public IProductRepository Products { get; private set; }
+
+        public IImageFileRepository ImageFiles { get; private set; }
+
         public UnitOfWork(DbContext context, IContextFactory factory)
         {
             this.Context = context;
             Users = new UserRepository(context, factory);
             Roles = new RoleRepository(context, factory);
             UserRoles = new UserRoleRepository(context, factory);
+            Products = new ProductRepository(context, factory);
         }
 
         public int Commit()

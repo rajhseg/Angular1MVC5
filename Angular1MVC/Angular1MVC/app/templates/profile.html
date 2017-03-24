@@ -1,1 +1,152 @@
-﻿Profile 
+﻿<div>
+    <br/>
+    <div class="panel panel-primary" ng-show="!isEdit" >
+        <div class="panel-heading">           
+            <button style="cursor:pointer" type="button" class="btn btn-success btn-md text-right" ng-click="Edit()">
+                <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Edit
+            </button>         
+        </div>
+    </div>
+    <div ng-show="isEdit" class="panel panel-info">
+        <div class="panel-heading">
+            <h4>Editing Profile</h4>
+        </div>
+        <div class="panel-body">
+            <div class="col-md-12">
+
+                <form name="registerform" validate-invalid class="form-signin" id="registerform">
+
+                    <div class="form-group row">
+                        <label class="col-2 col-form-label">User Name</label>
+                        <div class="col-10">
+                            <input name="inpUserName" id="inpUserName" class="form-control" type="text" ng-model="user.username"
+                                   placeholder="User Name" required ng-minlength="6">
+
+                            <div style="font-size:12px;padding-left:5px;padding-bottom:10px;margin-top:-7px;color:red"
+                                 ng-show="registerform.inpUserName.$invalid && ShowError">
+                                <span ng-show="registerform.inpUserName.$error.minlength">
+                                    Minimum length for username is 6
+                                </span>
+                                <span ng-show="registerform.inpUserName.$error.required">
+                                    User name is required
+                                </span>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="example-text-input" class="col-2 col-form-label">Display Name</label>
+                        <div class="col-10">
+                            <input class="form-control" id="inpDisplayname" type="text" ng-model="user.displayname"
+                                   name="inpDisplayname" placeholder="Display Name" required ng-minlength="6">
+
+                            <div style="font-size:12px;padding-left:5px;padding-bottom:10px;margin-top:-7px;color:red"
+                                 ng-show="registerform.inpDisplayname.$invalid && ShowError">
+                                <span ng-show="registerform.inpDisplayname.$error.minlength">
+                                    Minimum length for display name is 6
+                                </span>
+                                <span ng-show="registerform.inpDisplayname.$error.required">
+                                    Display name is required
+                                </span>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="example-text-input" class="col-2 col-form-label">Email</label>
+                        <div class="col-10">
+                            <input class="form-control" id="inpEmail" type="text" ng-model="user.email"  
+                                   name="inpEmail"  placeholder="Email" required>
+
+                            <div style="font-size:12px;padding-left:5px;padding-bottom:10px;margin-top:-7px;color:red"
+                                 ng-show="registerform.inpEmail.$invalid && ShowError">
+                                <span ng-show="registerform.inpEmail.$error.required">
+                                    Email is required
+                                </span>
+                                <span ng-show="registerform.inpEmail.$error.email">
+                                    Not a valid Email format
+                                </span>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="example-text-input" class="col-2 col-form-label">Phone</label>
+                        <div class="col-10">
+                            <input class="form-control" id="inpPhone" type="text" ng-model="user.phone"
+                                    ng-pattern="/^\d{10}$/" name="inpPhone" placeholder="Phone number" required>
+
+                            <div style="font-size:12px;padding-left:5px;padding-bottom:10px;margin-top:-7px;color:red"
+                                 ng-show="registerform.inpPhone.$invalid && ShowError">
+                                <span ng-show="registerform.inpPhone.$error.required">
+                                    Phone number is required
+                                </span>
+                                <span ng-show="registerform.inpPhone.$error.pattern">
+                                    Not a valid phone number,must be 10 digits
+                                </span>
+                            </div>
+
+                        </div>
+                    </div>                
+
+                    <button class="btn btn-lg btn-success btn-block btn-signin" ng-click="Save(form.enableSubmit)">
+                        Save
+                    </button>   
+
+                </form>
+                                                                                                                                                                              
+            </div>
+
+        </div>
+        <div class="panel-footer">
+
+        </div>
+    </div>
+    <div ng-show="!isEdit" class="panel panel-warning">
+        <div class="panel-heading">
+            <h4>User Profile</h4>
+        </div>
+        <div class="panel-body">
+           
+       <div class="col-md-12">
+
+           <div class="form-group row">
+               <label for="example-text-input" class="col-2 col-form-label">User Name</label>
+               <div class="col-10">
+                   <input class="form-control" readonly type="text" ng-model="user.username">
+               </div>
+           </div>
+
+           <div class="form-group row">
+               <label for="example-text-input" class="col-2 col-form-label">Display Name</label>
+               <div class="col-10">
+                   <input class="form-control"  readonly type="text" ng-model="user.displayname">
+               </div>
+           </div>
+
+           <div class="form-group row">
+               <label for="example-text-input" class="col-2 col-form-label">Email</label>
+               <div class="col-10">
+                   <input class="form-control"   readonly type="text" ng-model="user.email">
+               </div>
+           </div>        
+
+           <div class="form-group row">
+               <label for="example-text-input" class="col-2 col-form-label">Phone</label>
+               <div class="col-10">
+                   <input class="form-control" readonly type="text" ng-model="user.phone">
+               </div>
+           </div>
+           
+
+    </div>
+
+        </div>
+        <div class="panel-footer">
+
+        </div>
+    </div>
+</div>

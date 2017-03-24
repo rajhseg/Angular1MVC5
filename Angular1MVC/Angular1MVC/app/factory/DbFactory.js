@@ -4,10 +4,22 @@
         login: Login,
         register: Register,
         get: Get,
-        post:Post
+        post: Post,
+        GetUserInfo: GetUserInfo,
+        UpdateProfile: UpdateProfile,
+        UpdatePassword: updatePassword,
+        DeActivate: DeActivate
     };
 
     function Login(url, data, success, failure) {
+        Post(url, data, success, failure);
+    }
+
+    function UpdateProfile(url, data, success, failure) {
+        Post(url, data, success, failure);
+    }
+
+    function DeActivate(url, data, success, failure) {
         Post(url, data, success, failure);
     }
 
@@ -21,6 +33,14 @@
         registerdata.phone =  parseInt(data.phone,10);
 
         Post(url, registerdata, success, failure);
+    }
+
+    function GetUserInfo(url, success, failure) {
+        return Get(url, {}, success, failure);
+    }
+
+    function updatePassword(url, data, scallback, fcallback) {
+        return Post(url, data, scallback, fcallback);
     }
 
     function Get(url, config, success, failure) {
